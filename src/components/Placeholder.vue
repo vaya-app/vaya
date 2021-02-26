@@ -24,6 +24,6 @@ export default {
   name: "Placeholder",
   data() {
     return { count: 13 };
-  },
+  }
 };
 </script>

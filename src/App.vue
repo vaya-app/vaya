@@ -8,7 +8,7 @@ import Placeholder from "@/components/Placeholder.vue";
 export default {
   name: "App",
   components: {
-    Placeholder,
-  },
+    Placeholder
+  }
 };
 </script>
