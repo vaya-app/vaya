@@ -2,8 +2,8 @@
   "name": "vaya",
   "version": "0.0.1",
   "scripts": {
-    "lint": "eslint 'src/**/*.{js,vue}'",
-    "lint:fix": "eslint 'src/**/*.{js,vue}' --fix",
+    "lint": "eslint '*.js' 'src/**/*.{js,vue}'",
+    "lint:fix": "eslint '*.js' 'src/**/*.{js,vue}' --fix",
     "dev:vue": "vite",
     "dev:electron": "electron .",
     "build:vue": "vite build",

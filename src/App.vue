@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import Placeholder from "@/components/Placeholder.vue";
+import Placeholder from '@/components/Placeholder.vue';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Placeholder
   }
