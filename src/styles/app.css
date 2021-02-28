@@ -1,0 +1,4 @@
+/* Not showing scrollbars in Electron */
+::-webkit-scrollbar {
+  display: none;
+}

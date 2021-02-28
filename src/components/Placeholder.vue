@@ -15,12 +15,22 @@
           ❤️ &lt;=&gt; {{ count }}
         </button>
         <hr>
-        <span class="icon-text">
-          <span class="icon has-text-success">
-            <i class="fas fa-check-square" />
+        <p>
+          <span class="icon-text">
+            <span class="icon has-text-success">
+              <i class="fas fa-check-square" />
+            </span>
+            <span>Make shinny Fontawesome 5.15.2 icons work</span>
           </span>
-          <span>Make shinny Fontawesome 5.15.2 icons work</span>
-        </span>
+        </p>
+        <p>
+          <span class="icon-text">
+            <span class="icon has-text-success">
+              <i class="fas fa-check-square" />
+            </span>
+            <span>Make magic routing (<a href="/settings">settings</a> and <a href="/error">error</a>)</span>
+          </span>
+        </p>
       </div>
     </div>
   </div>
