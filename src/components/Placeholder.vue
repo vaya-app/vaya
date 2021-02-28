@@ -14,6 +14,13 @@
         >
           ❤️ &lt;=&gt; {{ count }}
         </button>
+        <hr>
+        <span class="icon-text">
+          <span class="icon has-text-success">
+            <i class="fas fa-check-square" />
+          </span>
+          <span>Make shinny Fontawesome 5.15.2 icons work</span>
+        </span>
       </div>
     </div>
   </div>
