@@ -10,7 +10,12 @@
           class="delete"
           @click="close"
         />
-        <slot />
+        <h1 class="title">
+          {{ data.title }}
+        </h1>
+        <p class="subtitle">
+          {{ data.body }}
+        </p>
       </div>
     </div>
   </div>
@@ -18,11 +23,16 @@
 
 <script>
 export default {
-  name: 'Modal',
-  emits: ['close'],
+  name: 'ErrorModal',
+  props: {
+    data: {
+      type: Object,
+      default: () => {}
+    } 
+  },
   methods: {
     close() {
-      this.$emit('close');
+      this.emitter.emit('close-modal');
     }
   }
 };

@@ -1,4 +1,5 @@
 import { defineAsyncComponent, createApp, h } from 'vue';
+import mitt from 'mitt';
 import 'bulma/css/bulma.min.css';
 import './styles/app.css';
 
@@ -20,4 +21,9 @@ const RouterApp = {
   }
 };
 
-createApp(RouterApp).mount('#app');
+const app = createApp(RouterApp);
+const emitter = mitt();
+
+app.config.globalProperties.emitter = emitter;
+
+app.mount('#app');
