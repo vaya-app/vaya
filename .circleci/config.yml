@@ -20,9 +20,6 @@ jobs:
       - run:
           name: Lint project
           command: npm run lint
-      - run:
-          name: Build Vue project
-          command: npm run build:vue
 
 workflows:
   build-vaya:

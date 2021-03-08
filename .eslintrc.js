@@ -1,12 +1,18 @@
 module.exports = {
+  root: true,
+  env: {
+    node: true,
+  },
   extends: [
-    'plugin:vue/vue3-recommended'
+    'plugin:vue/vue3-essential',
+    '@vue/airbnb',
   ],
+  parserOptions: {
+    parser: 'babel-eslint',
+  },
   rules: {
-    'semi': ['error', 'always'],
-    'quotes': ['error', 'single'],
-    'comma-dangle': ['error', 'never'],
     'max-len': ['error', 120],
-    'no-multiple-empty-lines': ['error', { 'max': 2 }]
-  }
+    'global-require': 'off',
+    'import/no-dynamic-require': 'off',
+  },
 };

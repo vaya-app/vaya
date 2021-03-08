@@ -27,13 +27,13 @@ export default {
   props: {
     data: {
       type: Object,
-      default: () => {}
-    } 
+      default: () => {},
+    },
   },
   methods: {
     close() {
       this.emitter.emit('close-modal');
-    }
-  }
+    },
+  },
 };
 </script>

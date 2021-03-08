@@ -1,10 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+import { app, BrowserWindow } from 'electron';
 
-try {
-  require('electron-reloader')(module);
-} catch { }
-
-function createWindow() {
+async function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -12,25 +8,23 @@ function createWindow() {
     minHeight: 600,
     webPreferences: {
       contextIsolation: true,
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   });
 
-  // TODO: use builded index.html instead of running vue dev server
-  // win.loadFile('dist/index.html')
-  win.loadURL('http://localhost:3000');
+  await win.loadURL('http://localhost:8080');
 }
 
-app.whenReady().then(createWindow);
-
 app.on('window-all-closed', () => {
-  // if (process.platform !== 'darwin') {
   app.quit();
-  // }
 });
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+app.on('ready', async () => {
+  createWindow();
 });

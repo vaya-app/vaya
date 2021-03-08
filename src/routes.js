@@ -1,4 +1,4 @@
 export default {
   '/': 'Placeholder',
-  '/settings': 'Settings'
+  '/settings': 'Settings',
 };

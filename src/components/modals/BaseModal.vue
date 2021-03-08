@@ -14,13 +14,13 @@ export default {
   name: 'BaseModal',
   components: {
     ErrorModal,
-    AnotherModal
+    AnotherModal,
   },
   data() {
     return {
       active: false,
       component: null,
-      componentData: {}
+      componentData: {},
     };
   },
   created() {
@@ -35,7 +35,7 @@ export default {
     },
     closeModal() {
       this.active = false;
-    }
-  }
+    },
+  },
 };
 </script>

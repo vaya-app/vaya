@@ -36,7 +36,7 @@
             <span class="icon has-text-success">
               <i class="fas fa-check-square" />
             </span>
-            <span>Make awesome <strong>reusable</strong> 👉 modals 👈 
+            <span>Make awesome <strong>reusable</strong> 👉 modals 👈
               (<span @click="showDemoModal()">error</span> and <span @click="showAnotherDemoModal()">kitty</span>)
             </span>
           </span>
@@ -53,31 +53,31 @@ import BaseModal from '@/components/modals/BaseModal.vue';
 export default {
   name: 'Placeholder',
   components: {
-    BaseModal
+    BaseModal,
   },
   data() {
     return {
-      count: 13
+      count: 13,
     };
   },
   methods: {
     showDemoModal() {
       this.emitter.emit('open-modal', {
-        'component': 'ErrorModal',
-        'data': {
-          'title': 'Oopsie',
-          'body': 'Bad things happen'
-        }
+        component: 'ErrorModal',
+        data: {
+          title: 'Oopsie',
+          body: 'Bad things happen',
+        },
       });
     },
     showAnotherDemoModal() {
       this.emitter.emit('open-modal', {
-        'component': 'AnotherModal',
-        'data': {
-          'picture_url': 'https://placekitten.com/300/300'
-        }
+        component: 'AnotherModal',
+        data: {
+          picture_url: 'https://placekitten.com/300/300',
+        },
       });
-    }
-  }
+    },
+  },
 };
 </script>
