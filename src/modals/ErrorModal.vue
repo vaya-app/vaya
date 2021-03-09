@@ -1,15 +1,9 @@
 <template>
   <div class="modal is-active">
-    <div
-      class="modal-background"
-      @click="close"
-    />
+    <div class="modal-background" @click="close" />
     <div class="modal-content">
       <div class="notification">
-        <button
-          class="delete"
-          @click="close"
-        />
+        <button class="delete" @click="close" />
         <h1 class="title">
           {{ data.title }}
         </h1>

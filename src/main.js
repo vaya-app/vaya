@@ -11,7 +11,7 @@ const RouterApp = {
   computed: {
     CurrentComponent() {
       const page = routes[this.currentRoute] || 'Placeholder';
-      return require(`./components/${page}.vue`).default;
+      return require(`./views/${page}.vue`).default;
     },
   },
   render() {

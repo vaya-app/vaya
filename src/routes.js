@@ -1,4 +1,5 @@
 export default {
-  '/': 'Placeholder',
+  '/': 'Dashboard',
+  '/demo': 'Placeholder',
   '/settings': 'Settings',
 };

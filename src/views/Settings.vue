@@ -3,9 +3,7 @@
     <div class="level">
       <div class="level-left">
         <div class="level-item">
-          <p class="title">
-            Preferences
-          </p>
+          <p class="title">Preferences</p>
         </div>
       </div>
       <div class="level-right">
@@ -24,12 +22,8 @@
       <div class="control has-icons-left">
         <div class="select">
           <select>
-            <option disabled>
-              Select language
-            </option>
-            <option selected>
-              English
-            </option>
+            <option disabled>Select language</option>
+            <option selected>English</option>
             <option>Русский</option>
           </select>
         </div>
@@ -40,9 +34,7 @@
     </div>
     <div class="field">
       <div class="control">
-        <button class="button is-info is-light">
-          Export
-        </button>
+        <button class="button is-info is-light">Export</button>
       </div>
     </div>
   </div>

@@ -1,14 +1,10 @@
 <template>
-  <component
-    :is="component"
-    v-if="active"
-    :data="componentData"
-  />
+  <component :is="component" v-if="active" :data="componentData" />
 </template>
 
 <script>
-import ErrorModal from '@/components/modals/ErrorModal.vue';
-import AnotherModal from '@/components/modals/AnotherModal.vue';
+import ErrorModal from '@/modals/ErrorModal.vue';
+import AnotherModal from '@/modals/AnotherModal.vue';
 
 export default {
   name: 'BaseModal',
