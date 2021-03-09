@@ -74,7 +74,7 @@ export default {
       this.emitter.emit('open-modal', {
         component: 'AnotherModal',
         data: {
-          picture_url: 'https://placekitten.com/300/300',
+          picture_url: 'https://placekitten.com/250/250',
         },
       });
     },

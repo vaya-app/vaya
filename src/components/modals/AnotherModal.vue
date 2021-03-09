@@ -5,14 +5,12 @@
       @click="close"
     />
     <div class="modal-content">
-      <div class="columns is-flex is-centered">
-        <figure class="image">
+        <figure class="image container is-128x128">
           <img
             :src="data.picture_url"
             alt="logo"
           >
         </figure>
-      </div>
     </div>
     <button
       class="modal-close is-large"
