@@ -98,9 +98,7 @@ export default {
     showCreateConnectionModal() {
       this.emitter.emit('open-modal', {
         component: 'CreateConnectionModal',
-        data: {
-          picture_url: 'https://placekitten.com/250/250',
-        },
+        data: {},
       });
     },
   },

@@ -47,7 +47,6 @@
           </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">
-          <!-- <label class="label">Tags</label> -->
           <p class="control" v-for="tag in tags" :key="tag.name">
             <button
               class="button is-light is-rounded"
