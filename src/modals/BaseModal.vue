@@ -5,12 +5,14 @@
 <script>
 import ErrorModal from '@/modals/ErrorModal.vue';
 import AnotherModal from '@/modals/AnotherModal.vue';
+import CreateConnectionModal from '@/modals/CreateConnectionModal.vue';
 
 export default {
   name: 'BaseModal',
   components: {
     ErrorModal,
     AnotherModal,
+    CreateConnectionModal,
   },
   data() {
     return {

@@ -1,16 +1,20 @@
 <template>
   <ul class="menu-list">
-    <div class="field">
-      <p class="control has-icons-right">
+    <div class="field is-grouped">
+      <p class="control is-expanded">
         <input
           class="input"
           type="text"
           placeholder="Name..."
           v-model="searchKeyword"
         />
-        <span @click="searchKeyword = ''" class="icon is-small is-right">
-          <i class="fas fa-times"></i>
-        </span>
+      </p>
+      <p class="control">
+        <button @click="showCreateConnectionModal()" class="button is-primary is-light">
+          <span class="icon">
+            <i class="fas fa-plus" />
+          </span>
+        </button>
       </p>
     </div>
     <Connection
@@ -88,6 +92,16 @@ export default {
   computed: {
     filteredConnections() {
       return this.connections.filter((conn) => conn.name.toLowerCase().includes(this.searchKeyword.toLowerCase()));
+    },
+  },
+  methods: {
+    showCreateConnectionModal() {
+      this.emitter.emit('open-modal', {
+        component: 'CreateConnectionModal',
+        data: {
+          picture_url: 'https://placekitten.com/250/250',
+        },
+      });
     },
   },
 };
