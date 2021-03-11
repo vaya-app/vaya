@@ -4,6 +4,9 @@
 ::-webkit-scrollbar
   display: none
 
-// Disable text selection
+
 body
-  user-select: none
+  // Disable text selection
+  -webkit-user-select: none
+  // Allow Electron window to be draggable
+  -webkit-app-region: drag

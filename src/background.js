@@ -2,10 +2,11 @@ import { app, BrowserWindow } from 'electron';
 
 async function createWindow() {
   const win = new BrowserWindow({
-    width: 1024,
-    height: 768,
-    minWidth: 1024,
-    minHeight: 768,
+    width: 800,
+    height: 600,
+    minWidth: 800,
+    minHeight: 600,
+    titleBarStyle: 'hidden',
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: true,
