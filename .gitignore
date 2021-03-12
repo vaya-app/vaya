@@ -3,4 +3,6 @@ node_modules/
 dist/
 dist_electron/
 
+dump.rdb
+
 .DS_Store

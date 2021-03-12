@@ -1,5 +1,5 @@
 <template>
-  <p>Shell content will be here. Stay tuned. 👨‍💻</p>
+  <p class="subtitle">Shell content will be here. Stay tuned. 👨‍💻</p>
 </template>
 
 <script>

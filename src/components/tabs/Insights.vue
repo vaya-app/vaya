@@ -1,5 +1,5 @@
 <template>
-  <p>Insights content will be here. Stay tuned. 📈</p>
+  <p class="subtitle">Insights content will be here. Stay tuned. 📈</p>
 </template>
 
 <script>
