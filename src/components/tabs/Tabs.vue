@@ -12,7 +12,9 @@
         </li>
       </ul>
     </div>
-    <component :is="currentTab"></component>
+    <keep-alive>
+      <component :is="currentTab"></component>
+    </keep-alive>
   </div>
 </template>
 

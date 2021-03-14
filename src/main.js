@@ -1,4 +1,5 @@
 import { createApp, h } from 'vue';
+import VueApexCharts from 'vue3-apexcharts';
 import mitt from 'mitt';
 import '@/styles/app.sass';
 
@@ -23,5 +24,7 @@ const app = createApp(RouterApp);
 const emitter = mitt();
 
 app.config.globalProperties.emitter = emitter;
+
+app.use(VueApexCharts);
 
 app.mount('#app');
