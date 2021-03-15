@@ -14,5 +14,6 @@ module.exports = {
     'max-len': ['error', 120],
     'global-require': 'off',
     'import/no-dynamic-require': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

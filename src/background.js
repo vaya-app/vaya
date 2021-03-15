@@ -1,4 +1,5 @@
 import { app, BrowserWindow } from 'electron';
+import installExtension from 'electron-devtools-installer';
 
 async function createWindow() {
   const win = new BrowserWindow({
@@ -27,5 +28,11 @@ app.on('activate', () => {
 });
 
 app.on('ready', async () => {
+  // TODO: figure out how to ignore extension usage of browser API https://github.com/electron/electron/issues/23662
+  // Ignore "ExtensionLoadWarning" for now
+  await installExtension({
+    id: 'ljjemllljcmogpfapbkkighbhhppjdbg',
+    electron: '>=1.2.1',
+  });
   createWindow();
 });
