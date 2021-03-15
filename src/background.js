@@ -15,6 +15,7 @@ async function createWindow() {
   });
 
   await win.loadURL('http://localhost:8080');
+  win.webContents.openDevTools();
 }
 
 app.on('window-all-closed', () => {
@@ -34,5 +35,5 @@ app.on('ready', async () => {
     id: 'ljjemllljcmogpfapbkkighbhhppjdbg',
     electron: '>=1.2.1',
   });
-  createWindow();
+  await createWindow();
 });
