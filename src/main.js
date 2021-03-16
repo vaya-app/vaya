@@ -1,6 +1,7 @@
 import { createApp, h } from 'vue';
 import VueApexCharts from 'vue3-apexcharts';
 import mitt from 'mitt';
+import Store from 'electron-store';
 import '@/styles/app.sass';
 
 import routes from './routes';
@@ -22,8 +23,10 @@ const RouterApp = {
 
 const app = createApp(RouterApp);
 const emitter = mitt();
+const store = new Store();
 
 app.config.globalProperties.emitter = emitter;
+app.config.globalProperties.store = store;
 
 app.use(VueApexCharts);
 

@@ -1,10 +1,14 @@
 import { app, BrowserWindow } from 'electron';
 import installExtension from 'electron-devtools-installer';
+import Store from 'electron-store';
+
+const store = new Store();
 
 async function createWindow() {
+  const windowSize = store.get('window_size');
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: windowSize ? windowSize.width : 800,
+    height: windowSize ? windowSize.height : 600,
     minWidth: 800,
     minHeight: 600,
     titleBarStyle: 'hidden',
@@ -16,6 +20,14 @@ async function createWindow() {
 
   await win.loadURL('http://localhost:8080');
   win.webContents.openDevTools();
+
+  win.on('resized', () => {
+    const size = win.getSize();
+    store.set('window_size', {
+      width: size[0],
+      height: size[1],
+    });
+  });
 }
 
 app.on('window-all-closed', () => {
