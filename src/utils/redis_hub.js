@@ -19,4 +19,22 @@ export default class RedisHub {
     const val = await this.connection.del(key);
     return val;
   }
+
+  static checkConnection(options) {
+    return new Promise((resolve, reject) => {
+      const conn = new Redis({
+        ...options,
+        retryStrategy: () => {},
+      });
+
+      conn.once('ready', () => {
+        resolve();
+        conn.disconnect();
+      });
+
+      conn.once('error', () => {
+        reject(new Error('Can\'t connect to Redis Server'));
+      });
+    });
+  }
 }

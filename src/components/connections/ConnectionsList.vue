@@ -10,7 +10,10 @@
         />
       </p>
       <p class="control">
-        <button @click="showCreateConnectionModal()" class="button is-primary is-light">
+        <button
+          @click="showCreateConnectionModal()"
+          class="button is-primary is-light"
+        >
           <span class="icon">
             <i class="fas fa-plus" />
           </span>
@@ -40,54 +43,8 @@ export default {
     };
   },
   mounted() {
-    this.connections = [
-      {
-        name: 'First connection',
-        tags: [
-          {
-            name: 'dev',
-            color: 'is-primary',
-          },
-          {
-            name: 'do',
-            color: 'is-info',
-          },
-        ],
-        databases: [
-          {
-            name: 'db0',
-            keysCount: 4766,
-          },
-          {
-            name: 'db1',
-            keysCount: 838,
-          },
-        ],
-      },
-      {
-        name: 'Second connection',
-        tags: [
-          {
-            name: 'local',
-            color: 'is-warning',
-          },
-        ],
-        databases: [
-          {
-            name: 'db0',
-            keysCount: 95678,
-          },
-          {
-            name: 'db1',
-            keysCount: 7567,
-          },
-          {
-            name: 'db3',
-            keysCount: 3485,
-          },
-        ],
-      },
-    ];
+    this.listConnections();
+    this.emitter.on('refresh-connections', this.listConnections);
   },
   computed: {
     filteredConnections() {
@@ -95,6 +52,9 @@ export default {
     },
   },
   methods: {
+    listConnections() {
+      this.connections = this.store.get('connections') || [];
+    },
     showCreateConnectionModal() {
       this.emitter.emit('open-modal', {
         component: 'CreateConnectionModal',

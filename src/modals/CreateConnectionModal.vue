@@ -60,12 +60,32 @@
             </button>
           </p>
         </div>
+        <div class="field" v-if="connection.showMessage">
+          <div class="notification is-primary" v-if="connection.success">
+            Connection successful. You can save it now.
+          </div>
+          <div class="notification is-danger" v-else>
+            Could not connect. Please check your connection details and try
+            again.
+          </div>
+        </div>
         <div class="field is-grouped is-grouped-right">
           <p class="control">
-            <button class="button is-info is-light">Test connection</button>
+            <button @click="testConnection()" class="button is-info is-light">
+              <span class="icon is-small" v-if="connection.isLoading">
+                <i class="fas fa-spinner"></i>
+              </span>
+              <span>Test connection</span>
+            </button>
           </p>
           <p class="control">
-            <button class="button is-primary is-light">Create</button>
+            <button
+              @click="createConnection()"
+              class="button is-primary is-light"
+              :disabled="!connection.success"
+            >
+              Create
+            </button>
           </p>
         </div>
       </div>
@@ -75,6 +95,8 @@
 </template>
 
 <script>
+import RedisHub from '@/utils/redis_hub';
+
 export default {
   name: 'CreateConnectionModal',
   props: {
@@ -85,6 +107,11 @@ export default {
   },
   data() {
     return {
+      connection: {
+        isLoading: false,
+        success: false,
+        showMessage: false,
+      },
       tags: [
         {
           name: 'local',
@@ -115,6 +142,60 @@ export default {
     };
   },
   methods: {
+    resetConnectionStatus() {
+      this.connection.isLoading = false;
+      this.connection.success = false;
+      this.connection.showMessage = false;
+    },
+    async testConnection() {
+      this.resetConnectionStatus();
+      this.connection.isLoading = true;
+      try {
+        // TODO: read the real values from form
+        await RedisHub.checkConnection({
+          host: 'localhost',
+          port: 6379,
+        });
+        this.connection.success = true;
+      } finally {
+        this.connection.showMessage = true;
+        this.connection.isLoading = false;
+      }
+    },
+    createConnection() {
+      // TODO: save the real values from form
+      const connections = this.store.get('connections') || [];
+      connections.push({
+        name: `Connection from store #${+new Date()}`,
+        tags: [
+          {
+            name: 'local',
+            color: 'is-warning',
+          },
+        ],
+        databases: [
+          {
+            name: 'db0',
+            keysCount: 47539,
+          },
+          {
+            name: 'db1',
+            keysCount: 23957,
+          },
+          {
+            name: 'db3',
+            keysCount: 9857,
+          },
+          {
+            name: 'db4',
+            keysCount: 765,
+          },
+        ],
+      });
+      this.store.set('connections', connections);
+      this.emitter.emit('refresh-connections');
+      this.close();
+    },
     close() {
       this.emitter.emit('close-modal');
     },
