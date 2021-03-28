@@ -1,6 +1,8 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import installExtension from 'electron-devtools-installer';
 import Store from 'electron-store';
+
+import exportPreferences from './utils/export_preferences';
 
 const store = new Store();
 
@@ -48,4 +50,8 @@ app.on('ready', async () => {
     electron: '>=1.2.1',
   });
   await createWindow();
+});
+
+ipcMain.on('show-export-dialog', () => {
+  exportPreferences();
 });

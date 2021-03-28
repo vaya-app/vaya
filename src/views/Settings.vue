@@ -34,14 +34,23 @@
     </div>
     <div class="field">
       <div class="control">
-        <button class="button is-info is-light">Export</button>
+        <button @click="exportPreferences()" class="button is-info is-light">
+          Export
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ipcRenderer } from 'electron';
+
 export default {
   name: 'Settings',
+  methods: {
+    exportPreferences() {
+      ipcRenderer.send('show-export-dialog');
+    },
+  },
 };
 </script>
