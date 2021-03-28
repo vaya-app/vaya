@@ -1,14 +1,27 @@
 <template>
-  <section class="section columns is-fullheight">
-    <aside class="column is-4 menu">
-      <p class="menu-label">Connections</p>
-      <ConnectionList />
-    </aside>
-    <div class="column is-8">
-      <Tabs />
-    </div>
-    <BaseModal />
-  </section>
+  <div>
+    <nav class="navbar is-fixed-top">
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a href="/settings" class="navbar-item">
+            <span class="icon">
+              <i class="fas fa-cog"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <section class="section columns is-fullheight py-0">
+      <aside class="column is-4 menu">
+        <p class="menu-label">Connections</p>
+        <ConnectionList />
+      </aside>
+      <div class="column is-8">
+        <Tabs />
+      </div>
+      <BaseModal />
+    </section>
+  </div>
 </template>
 
 <script>
