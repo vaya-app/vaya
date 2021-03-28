@@ -34,9 +34,17 @@
     </div>
     <div class="field">
       <div class="control">
-        <button @click="exportPreferences()" class="button is-info is-light">
-          Export
-        </button>
+        <div class="buttons">
+          <button
+            @click="importPreferences()"
+            class="button is-primary is-light"
+          >
+            Import
+          </button>
+          <button @click="exportPreferences()" class="button is-info is-light">
+            Export
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -50,6 +58,9 @@ export default {
   methods: {
     exportPreferences() {
       ipcRenderer.send('show-export-dialog');
+    },
+    importPreferences() {
+      ipcRenderer.send('show-import-dialog');
     },
   },
 };

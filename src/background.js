@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import installExtension from 'electron-devtools-installer';
 import Store from 'electron-store';
 
-import exportPreferences from './utils/export_preferences';
+import { importPreferences, exportPreferences } from './utils/preferences';
 
 const store = new Store();
 
@@ -11,7 +11,7 @@ async function createWindow() {
   const win = new BrowserWindow({
     width: windowSize ? windowSize.width : 800,
     height: windowSize ? windowSize.height : 600,
-    minWidth: 800,
+    minWidth: 1024,
     minHeight: 600,
     titleBarStyle: 'hidden',
     webPreferences: {
@@ -52,6 +52,11 @@ app.on('ready', async () => {
   await createWindow();
 });
 
+// IPC handlers
 ipcMain.on('show-export-dialog', () => {
   exportPreferences();
+});
+
+ipcMain.on('show-import-dialog', () => {
+  importPreferences();
 });
