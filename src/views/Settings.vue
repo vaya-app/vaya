@@ -36,7 +36,7 @@
       <div class="control">
         <div class="buttons">
           <button
-            @click="importPreferences()"
+            @click="showImportConfirmationModal()"
             class="button is-primary is-light"
           >
             Import
@@ -47,20 +47,51 @@
         </div>
       </div>
     </div>
+
+    <BaseModal />
   </div>
 </template>
 
 <script>
 import { ipcRenderer } from 'electron';
+import BaseModal from '@/modals/BaseModal.vue';
+import { toast } from 'bulma-toast';
 
 export default {
   name: 'Settings',
+  components: {
+    BaseModal,
+  },
+  created() {
+    ipcRenderer.on('show-success-export-toast', () => {
+      toast({
+        message: 'Your preferences was exported successfully',
+        type: 'is-success',
+        position: 'bottom-center',
+        dismissible: true,
+        pauseOnHover: true,
+      });
+    });
+
+    ipcRenderer.on('show-success-import-toast', () => {
+      toast({
+        message: 'Your preferences was imported successfully',
+        type: 'is-success',
+        position: 'bottom-center',
+        dismissible: true,
+        pauseOnHover: true,
+      });
+    });
+  },
   methods: {
     exportPreferences() {
       ipcRenderer.send('show-export-dialog');
     },
-    importPreferences() {
-      ipcRenderer.send('show-import-dialog');
+    showImportConfirmationModal() {
+      this.emitter.emit('open-modal', {
+        component: 'ImportPreferencesConfirmationModal',
+        data: {},
+      });
     },
   },
 };

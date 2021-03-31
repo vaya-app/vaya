@@ -53,10 +53,10 @@ app.on('ready', async () => {
 });
 
 // IPC handlers
-ipcMain.on('show-export-dialog', () => {
-  exportPreferences();
+ipcMain.on('show-export-dialog', (event) => {
+  exportPreferences(event);
 });
 
-ipcMain.on('show-import-dialog', () => {
-  importPreferences();
+ipcMain.on('show-import-dialog', (event) => {
+  importPreferences(event);
 });

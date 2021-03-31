@@ -6,6 +6,7 @@
 import ErrorModal from '@/modals/ErrorModal.vue';
 import AnotherModal from '@/modals/AnotherModal.vue';
 import CreateConnectionModal from '@/modals/CreateConnectionModal.vue';
+import ImportPreferencesConfirmationModal from '@/modals/ImportPreferencesConfirmationModal.vue';
 
 export default {
   name: 'BaseModal',
@@ -13,6 +14,7 @@ export default {
     ErrorModal,
     AnotherModal,
     CreateConnectionModal,
+    ImportPreferencesConfirmationModal,
   },
   data() {
     return {
