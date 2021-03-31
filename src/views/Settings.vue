@@ -1,61 +1,72 @@
 <template>
-  <div class="container is-fluid">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <p class="title">Preferences</p>
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item">
-          <a href="/">
-            <span class="icon is-large">
-              <i class="fas fa-times" />
+  <div>
+    <nav class="navbar is-fixed-top">
+      <div class="navbar-menu">
+        <div class="navbar-end">
+          <a href="/" class="navbar-item">
+            <span class="icon">
+              <i class="fas fa-times"></i>
             </span>
           </a>
         </div>
       </div>
-    </div>
+    </nav>
 
-    <div class="field">
-      <label class="label">Language</label>
-      <div class="control has-icons-left">
-        <div class="select">
-          <select>
-            <option disabled>Select language</option>
-            <option selected>English</option>
-            <option>Русский</option>
-          </select>
-        </div>
-        <span class="icon is-left">
-          <i class="fas fa-globe" />
-        </span>
-      </div>
-    </div>
-    <div class="field">
-      <div class="control">
-        <div class="buttons">
-          <button
-            @click="showImportConfirmationModal()"
-            class="button is-primary is-light"
-          >
-            Import
-          </button>
-          <button @click="exportPreferences()" class="button is-info is-light">
-            Export
-          </button>
+    <section class="section py-0">
+      <p class="title">Settings</p>
+
+      <div class="field">
+        <label class="label">Tags</label>
+        <div class="control">
+          <p>
+            Here will be an option to add your own tags, which may be used in
+            Connections.
+          </p>
         </div>
       </div>
-    </div>
 
-    <BaseModal />
+      <div class="field">
+        <label class="label">Import / Export preferences</label>
+        <div class="control">
+          <div class="buttons">
+            <button
+              @click="showImportConfirmationModal()"
+              class="button is-primary is-light"
+            >
+              Import
+            </button>
+            <button
+              @click="exportPreferences()"
+              class="button is-info is-light"
+            >
+              Export
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Versions</label>
+        <div class="control">
+          <ul>
+            <li><b>Vaya:</b> {{ versions.vaya }}</li>
+            <li><b>Electron:</b> {{ versions.electron }}</li>
+            <li><b>Node:</b> {{ versions.node }}</li>
+            <li><b>Chrome:</b> {{ versions.chrome }}</li>
+          </ul>
+        </div>
+      </div>
+
+      <BaseModal />
+    </section>
   </div>
 </template>
 
 <script>
 import { ipcRenderer } from 'electron';
-import BaseModal from '@/modals/BaseModal.vue';
 import { toast } from 'bulma-toast';
+import BaseModal from '@/modals/BaseModal.vue';
+import getVersions from '@/utils/versions';
 
 export default {
   name: 'Settings',
@@ -82,6 +93,13 @@ export default {
         pauseOnHover: true,
       });
     });
+
+    this.versions = getVersions();
+  },
+  data() {
+    return {
+      versions: {},
+    };
   },
   methods: {
     exportPreferences() {
