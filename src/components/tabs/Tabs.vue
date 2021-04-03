@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       tabs: ['Keys', 'Shell', 'Insights'],
-      currentTab: 'Keys',
+      currentTab: 'Shell',
     };
   },
 };
